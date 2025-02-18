@@ -1,20 +1,24 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import { Navbar } from "./components/Navbar";
 import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
 import { Signup } from "./pages/Signup";
 import { Dashboard } from "./pages/Dashboard";
 import { useState } from "react";
-import { PrivateRoute } from "./components/PrivateRoute";
+import { Navbar } from "./components/common/Navbar";
+import PrivateRoute from "./components/core/Auth/PrivateRoute";
 
 function App() {
 
   const [isLoggedIn,setIsLoggedIn]=useState(false);
 
   return (
-  <div className="w-screen h-screen bg-richblack-900 flex flex-col">
-    <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
+  <div className="flex min-h-screen w-screen flex-col bg-richblack-900 font-inter">
+
+    <Routes>
+      <Route path="/" element={<Home/>}/>
+    </Routes>
+    {/* <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
     <Routes>
       <Route path="/" element={<Home isLoggedIn={isLoggedIn}/>}/>
       <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn}/>}/>
@@ -24,7 +28,7 @@ function App() {
           <Dashboard/>
         </PrivateRoute>
         }/>
-    </Routes>
+    </Routes> */}
   </div>
   );
 }

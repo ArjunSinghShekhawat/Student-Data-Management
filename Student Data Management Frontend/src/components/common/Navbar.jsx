@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import logo from '../assets/Logo.svg';
+import logo from "../../assets/Logo/Logo-Full-Light.png"
 import toast from 'react-hot-toast';
 
 export const Navbar = (props) => {

@@ -1,8 +1,8 @@
 import React from 'react'
-import frameImage from "../assets/frame.png";
+import frameImage from "../../../assets/Images/frame.png"
+import { FcGoogle } from "react-icons/fc";
 import { SignUpForm } from './SignUpForm';
 import { LoginForm } from './LoginForm';
-import { FcGoogle } from "react-icons/fc";
 
 
 export const Template = ({title,des1,des2,image,formType,setIsLoggedIn}) => {

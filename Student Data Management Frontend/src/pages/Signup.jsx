@@ -1,6 +1,6 @@
 import React from 'react'
-import signUpImg from "../assets/signup.png";
-import { Template } from '../components/Template';
+import signUpImg from "../assets/Images/signup.webp";
+import { Template } from '../components/core/Auth/Template';
 export const Signup = ({setIsLoggedIn}) => {
 
   return (
