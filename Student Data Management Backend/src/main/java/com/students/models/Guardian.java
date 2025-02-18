@@ -20,8 +20,6 @@ public class Guardian {
     private String relationship;
     private String contactNumber;
     private String occupation;
-    private Address address;
-
     @DBRef
     private User user;
 }

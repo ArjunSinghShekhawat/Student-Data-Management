@@ -47,7 +47,7 @@ public class CustomUserDetailsServiceImpl implements UserDetailsService {
     }
 
     private UserDetails buildUserDetails(String email, String password, ROLE role) {
-        if (role == null) role = ROLE.STUDENT;
+        if (role == null) role = ROLE.ROLE_STUDENT;
 
         List<GrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority(role.toString()));

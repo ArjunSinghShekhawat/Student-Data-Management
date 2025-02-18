@@ -1,7 +1,6 @@
 package com.students.controllers;
 
 import com.students.enums.ROLE;
-import com.students.models.VerificationCode;
 import com.students.requests.LoginRequest;
 import com.students.requests.OtpVerificationRequest;
 import com.students.requests.SignUpRequest;
@@ -16,7 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
 public class AuthController {
 
@@ -43,7 +42,8 @@ public class AuthController {
         AuthResponse authResponse = new AuthResponse();
         authResponse.setJwt(token);
         authResponse.setMessage("Register Success");
-        authResponse.setRole(ROLE.STUDENT);
+        authResponse.setRole(req.getRole());
+        authResponse.setStatus(true);
 
         return new ResponseEntity<>(authResponse, HttpStatus.OK);
     }

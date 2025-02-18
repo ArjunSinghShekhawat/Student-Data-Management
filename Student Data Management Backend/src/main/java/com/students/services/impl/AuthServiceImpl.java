@@ -43,6 +43,7 @@ public class AuthServiceImpl implements AuthService {
     private final AddressRepository addressRepository;
     private final AcademicDetailsRepository academicDetailsRepository;
     private final GuardianRepository guardianRepository;
+    private final FacultyRepository facultyRepository;
 
 
     @Override
@@ -92,6 +93,7 @@ public class AuthServiceImpl implements AuthService {
         String email = Validate.validate(request.getEmail());
         String fullName = Validate.validate(request.getFullName());
         String otp=request.getOtp();
+        ROLE role = request.getRole();
 
         VerificationCode verificationCode = verificationCodeRepository.findByEmail(email);
 
@@ -100,40 +102,60 @@ public class AuthServiceImpl implements AuthService {
             throw new StudentException("wrong otp...");
         }
 
-        User user = userRepository.findByEmail(email);
+        if(role.toString().equals("ROLE_STUDENT")){
+            User user = userRepository.findByEmail(email);
 
-        //create a new student
-        if(user==null){
+            //create a new student
+            if(user==null){
 
-            User student=new User();
+                User student=new User();
 
-            student.setEmail(email);
-            student.setPassword(passwordEncoder.encode(Validate.validate(request.getPassword())));
-            student.setFullName(Validate.validate(fullName));
-            student.setGender(request.getGender());
-            student.setContactNumber(request.getContactNumber());
-            student.setRole(request.getRole());
+                student.setEmail(email);
+                student.setPassword(passwordEncoder.encode(Validate.validate(request.getPassword())));
+                student.setFullName(Validate.validate(fullName));
+                student.setGender(request.getGender());
+                student.setContactNumber(request.getContactNumber());
+                student.setRole(request.getRole());
 
-            User savedStudent = userRepository.save(student);
+                User savedStudent = userRepository.save(student);
 
-            //address
-            Address address=new Address();
-            address.setUser(savedStudent);
-            addressRepository.save(address);
+                //address
+                Address address=new Address();
+                address.setUser(savedStudent);
+                addressRepository.save(address);
 
-            //academicDetails
-            AcademicDetails academicDetails=new AcademicDetails();
-            academicDetails.setUser(savedStudent);
-            academicDetailsRepository.save(academicDetails);
+                //academicDetails
+                AcademicDetails academicDetails=new AcademicDetails();
+                academicDetails.setUser(savedStudent);
+                academicDetailsRepository.save(academicDetails);
 
-            //guardian
-            Guardian guardian = new Guardian();
-            guardian.setUser(savedStudent);
-            guardianRepository.save(guardian);
+                //guardian
+                Guardian guardian = new Guardian();
+                guardian.setUser(savedStudent);
+                guardianRepository.save(guardian);
+            }
+        }else{
+            Faculty faculty = facultyRepository.findByEmail(email);
+            //create a new student
+            if(faculty==null){
+
+                Faculty teacher = new Faculty();
+
+                teacher.setEmail(email);
+                teacher.setPassword(passwordEncoder.encode(Validate.validate(request.getPassword())));
+                teacher.setFullName(Validate.validate(fullName));
+                teacher.setGender(request.getGender());
+                teacher.setContactNumber(request.getContactNumber());
+                teacher.setRole(request.getRole());
+
+                Faculty savedFaculty = facultyRepository.save(teacher);
+            }
         }
+
+
         List<GrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority(
-                ROLE.STUDENT.toString()));
+                role.toString()));
 
         Authentication authentication = new UsernamePasswordAuthenticationToken(
                 email, null, authorities);
@@ -175,8 +197,6 @@ public class AuthServiceImpl implements AuthService {
     }
     private Authentication authenticate(String username, String otp) throws Exception {
         UserDetails userDetails = customUserDetailsService.loadUserByUsername(username);
-
-        System.out.println("sign in userDetails - " + userDetails);
 
         //check a student available or not in database
         if (userDetails == null) {

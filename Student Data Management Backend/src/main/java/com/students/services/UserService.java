@@ -8,6 +8,4 @@ public interface UserService {
 
     User findByUserEmail(String email) throws StudentException;
     User findById(ObjectId id) throws StudentException;
-
-
 }

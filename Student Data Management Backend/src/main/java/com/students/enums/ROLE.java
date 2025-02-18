@@ -1,5 +1,5 @@
 package com.students.enums;
 
 public enum ROLE {
-    ADMIN,STUDENT,FACULTY
+    ROLE_ADMIN,ROLE_STUDENT,ROLE_FACULTY
 }

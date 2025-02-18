@@ -19,15 +19,21 @@ import java.util.Map;
 public class GlobalException {
 
     @ExceptionHandler(StudentException.class)
-    public ResponseEntity<ErrorDetails> StudentExceptionHandler(StudentException studentException, WebRequest req){
+    public ResponseEntity<ErrorDetails> studentExceptionHandler(StudentException studentException, WebRequest req){
         ErrorDetails err= new ErrorDetails(studentException.getMessage(),req.getDescription(false), LocalDateTime.now());
         return new ResponseEntity<ErrorDetails>(err, HttpStatus.BAD_REQUEST);
 
     }
     @ExceptionHandler(FacultyException.class)
-    public ResponseEntity<ErrorDetails> FacultyExceptionHandler(FacultyException facultyException, WebRequest req){
+    public ResponseEntity<ErrorDetails> facultyExceptionHandler(FacultyException facultyException, WebRequest req){
         ErrorDetails err= new ErrorDetails(facultyException.getMessage(),req.getDescription(false), LocalDateTime.now());
         return new ResponseEntity<ErrorDetails>(err, HttpStatus.BAD_REQUEST);
+    }
+    @ExceptionHandler(VerificationException.class)
+    public ResponseEntity<ErrorDetails> verificationCodeExceptionHandler(VerificationException verificationException, WebRequest req){
+        ErrorDetails err= new ErrorDetails(verificationException.getMessage(),req.getDescription(false), LocalDateTime.now());
+        return new ResponseEntity<ErrorDetails>(err, HttpStatus.BAD_REQUEST);
+
     }
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String,String>> handleValidationExceptions(MethodArgumentNotValidException ex) {
