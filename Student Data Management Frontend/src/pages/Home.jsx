@@ -1,7 +1,7 @@
 import React from 'react'
 
-export const Home = () => {
+export const Home = ({isLoggedIn}) => {
   return (
-    <div>Home Arjun</div>
+    <div className=' flex justify-center items-center text-white text-3xl h-full'>Home Arjun</div>
   )
 }
