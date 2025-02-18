@@ -1,0 +1,126 @@
+### General ###
+HELP.md
+*.log
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+### Compiled files ###
+*.class
+*.jar
+*.war
+*.ear
+*.exe
+
+### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+.idea_modules/
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/gradle.xml
+.idea/libraries/
+.idea/shelf/
+.idea/modules.xml
+
+### STS (Spring Tool Suite) ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans/
+.sts4-cache/
+
+### Eclipse ###
+.metadata/
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*.swo
+*.class
+*.DS_Store
+
+### VS Code ###
+.vscode/
+
+### Maven ###
+target/
+!**/src/main/**/target/
+!**/src/test/**/target/
+.mvn/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+### Gradle ###
+.gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+gradle-app.setting
+gradle.properties
+gradle-wrapper.jar
+gradle-wrapper.properties
+gradlew
+gradlew.bat
+
+### Node.js / Frontend (if applicable) ###
+node_modules/
+npm-debug.log
+yarn.lock
+package-lock.json
+
+### Logs ###
+logs/
+*.log
+*.log.*
+nohup.out
+
+### Spring Boot Specific ###
+.env
+*.env
+*.properties
+application.yml
+application-*.yml
+application.properties
+application-*.properties
+
+### Database ###
+*.db
+*.sqlite
+*.h2.db
+*.mv.db
+*.trace.db
+
+### Lombok ###
+.lombok/
+
+### Security ###
+secrets/
+config/
+certificates/
+*.key
+*.pem
+*.crt
+*.pfx
+*.p12
+
+### Other ###
+*.~
+*.swp
+*.bak
+*.seed
+*.pid
+*.pyc
