@@ -1,14 +1,15 @@
-import React, { act } from 'react'
 import { Link } from 'react-router-dom'
 import { FaArrowRight } from "react-icons/fa6";
 import Banner from "../assets/Images/banner.mp4";
 import { HighLightText } from '../components/core/HomePage/HighLightText';
 import { CodeBlock } from '../components/core/HomePage/CodeBlock';
+import { TimeLineSection } from '../components/core/HomePage/TimeLineSection';
+import { LearningLanguageSection } from '../components/core/HomePage/LearningLanguageSection';
 import { CtaButton } from '../components/core/HomePage/CtaButton';
-
-
-
-
+import InstructorSection from '../components/core/HomePage/InstructorSection';
+import Footer from "../components/common/Footer";
+// import ReviewSlider from "../components/common/ReviewSlider";
+import { ExploreMore } from '../components/core/HomePage/ExploreMore';
 
 export const Home = () => {
   return (
@@ -119,7 +120,67 @@ export const Home = () => {
             backgroundGradient={<div className="codeblock2 absolute"></div>}
           />
         </div>
+        <ExploreMore/>
       </div>
+
+      {/* Section -2 */}
+      <div className=' bg-pure-greys-5 text-richblack-700'>
+        <div className=' homepage_bg h-[310px]'>
+          <div className=' w-11/12 max-w-maxContent flex flex-col items-center justify-between gap-5 mx-auto'>
+          <div className=' h-[150px]'>
+
+          </div>
+          <div className=' flex flex-row gap-7 text-white'>
+            <CtaButton active={true} linkto={"/signup"}>
+              <div className=' flex gap-2 items-center'>
+                Explore Full Catelog
+                <FaArrowRight/>
+              </div>
+            </CtaButton>
+            <CtaButton active={false} linkTo={"/signup"}>
+            <div>
+              Learn More
+            </div>
+            </CtaButton>
+          </div>
+
+          </div>
+
+        </div>
+
+        <div className=' mx-auto w-11/12 max-w-maxContent flex flex-col items-center justify-between gap-7'>
+        <div className=' flex flex-row gap-5 mb-10 mt-[95px]'>
+          <div className=' text-4xl font-semibold w-[45%]'>Get the Skills you need for a 
+            <HighLightText text={"job that is in demand"}/>
+          </div>
+          <div className=' flex flex-col gap-10 w-[40%] items-start'>
+          <div className=' text-[16px]'>The modern StudyNotion is the dictates its own terms. 
+            Today, to be a competitive specialist requires more than professional skills.</div>
+
+            <CtaButton active={true} linkTo={"/signup"}>
+            <div>Learn More</div>
+            </CtaButton>
+          </div>
+        </div>
+        <TimeLineSection/>
+        <LearningLanguageSection/>
+        </div>
+      </div>
+      {/* Section -3 */}
+      
+      <div className="relative mx-auto my-20 flex w-11/12 max-w-maxContent flex-col items-center justify-between gap-8 bg-richblack-900 text-white">
+        {/* Become a instructor section */}
+        <InstructorSection/>
+
+        {/* Reviws from Other Learner */}
+        <h1 className="text-center text-4xl font-semibold mt-8">
+          Reviews from other learners
+        </h1>
+      {/* <ReviewSlider/> */}
+      </div>
+
+      {/* Footer */}
+      <Footer/>
     </div>
   )
 }
